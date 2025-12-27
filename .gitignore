@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+*/node_modules
+
+# Contracts
+artifacts/
+cache/
+backend/artifacts/
+backend/cache/
+build/
+build-info/
+*.dbg.json
+
+# Environment
+.env
+backend/.env
+frontend/.env
+*.local
+
+# Build
+dist
+frontend/dist
+
+# Editor
+.vscode
+.idea
+.DS_Store
