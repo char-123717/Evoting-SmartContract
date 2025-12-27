@@ -1,0 +1,68 @@
+/* ==========================================
+   Global Styles (index.css)
+   ==========================================
+   This file handles global CSS configuration, including Tailwind imports
+   and custom utility classes used across the app.
+*/
+
+/* 1. Import Tailwind CSS Framework */
+@import "tailwindcss";
+
+/* 2. Import Custom Fonts (Outfit) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* 
+   In Tailwind v4, we use @theme to define custom variables (like fonts).
+*/
+@theme {
+  --font-outfit: 'Outfit', sans-serif;
+
+  /* Custom Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* 
+   3. Custom Utility Classes (Reusable Styles)
+   We use @apply to combine multiple Tailwind classes into one custom class name.
+*/
+
+/* Glassmorphism Effect Panel */
+.glass-panel {
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.05] shadow-2xl;
+}
+
+/* Gradient Button Style */
+.btn-gradient {
+  @apply relative overflow-hidden px-8 py-3 rounded-xl font-semibold text-white transition-all duration-300 transform active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+}
+
+/* Hover effect for Gradient Button (White flash) */
+.btn-gradient::before {
+  content: '';
+  @apply absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300;
+}
+
+.btn-gradient:hover::before {
+  @apply opacity-100;
+}
+
+/* Modern Input Field Style */
+.input-modern {
+  @apply w-full bg-white/[0.03] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all;
+}
+
+/* 4. Animation Utilities */
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
