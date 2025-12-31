@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import LoadingOverlay from './LoadingOverlay.jsx';
 
 // ==========================================
 // Component: VoterPanel
@@ -118,18 +119,10 @@ const VoterPanel = ({ contract, candidates, hideVotes, votingEnded, refresh }) =
         <div className="space-y-8 relative">
             {/* Global Loading Overlay */}
             {loading && (
-                <div className="fixed top-1/2 left-1/2 z-[100] pointer-events-none" style={{ transform: 'translate(-50%, -50%)' }}>
-                    <div className="flex flex-col items-center gap-6 p-8 rounded-3xl bg-white/[0.05] border border-white/10 shadow-2xl backdrop-blur-sm pointer-events-auto">
-                        <div className="relative w-16 h-16">
-                            <div className="absolute inset-0 border-4 border-indigo-500/30 rounded-full"></div>
-                            <div className="absolute inset-0 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                        </div>
-                        <div className="text-center space-y-2">
-                            <h3 className="text-xl font-bold text-white">Casting Your Vote</h3>
-                            <p className="text-sm text-slate-400">Please wait while the blockchain confirms your transaction...</p>
-                        </div>
-                    </div>
-                </div>
+                <LoadingOverlay
+                    title="Casting Your Vote"
+                    message="Please wait while the blockchain confirms your transaction..."
+                />
             )}
 
             <div className="flex items-center justify-between border-b border-white/5 pb-6">
